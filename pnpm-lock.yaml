@@ -17,7 +17,13 @@ importers:
       dotenv-cli:
         specifier: ^7.3.0
         version: 7.3.0
+      xmldom:
+        specifier: ^0.6.0
+        version: 0.6.0
     devDependencies:
+      '@types/xmldom':
+        specifier: ^0.1.32
+        version: 0.1.32
       only-allow:
         specifier: ^1.1.1
         version: 1.1.1
@@ -276,6 +282,10 @@ packages:
     dependencies:
       '@types/node': 18.17.5
     dev: false
+
+  /@types/xmldom@0.1.32:
+    resolution: {integrity: sha512-zPO1iqnODar0cIXhuCc0QyGP+t2IG9dr//VkxDtYKZJSikgN7bdLyMdnUNWRtCKeHkgc9KkbgsdccVbrCHCn2g==}
+    dev: true
 
   /@vladfrangu/async_event_emitter@2.2.2:
     resolution: {integrity: sha512-HIzRG7sy88UZjBJamssEczH5q7t5+axva19UbZLO6u0ySbYPrwzWiXBcC0WuHyhKKoeCyneH+FvYzKQq/zTtkQ==}
@@ -962,4 +972,9 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+    dev: false
+
+  /xmldom@0.6.0:
+    resolution: {integrity: sha512-iAcin401y58LckRZ0TkI4k0VSM1Qg0KGSc3i8rU+xrxe19A/BN1zHyVSJY7uoutVlaTSzYyk/v5AmkewAP7jtg==}
+    engines: {node: '>=10.0.0'}
     dev: false

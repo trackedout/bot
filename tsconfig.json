@@ -3,8 +3,6 @@
 	"display": "Default",
 	"compilerOptions": {
 		"allowJs": false,
-		"declaration": true,
-		"declarationMap": true,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
 		"inlineSources": false,
@@ -14,7 +12,6 @@
 		"preserveWatchOutput": true,
 		"skipLibCheck": true,
 		"strict": true,
-		"sourceMap": true,
 		"useUnknownInCatchVariables": true,
 		"lib": ["ES2021"],
 		"module": "ESNext",
@@ -22,7 +19,7 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
         "outDir": "./dist",
-		"rootDir": "."
+		"rootDir": "src"
 	},
     "include": ["src/**/*.ts", "src/*.ts"],
 	"exclude": ["node_modules", "dist"]

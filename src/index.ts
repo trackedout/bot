@@ -1,4 +1,6 @@
 import { CrossBuild, DiscordInteractionModule } from "crossbuild"
+import { hermits } from "./hermits.js"
+import { getLatestVideo } from "./youtube.js"
 
 const bot = new CrossBuild({
     name: "Tracked Out",
@@ -11,12 +13,13 @@ const bot = new CrossBuild({
             }
         })
     ],
-    componentPaths: ["/src/components"],
+    componentPaths: ["/components"],
     customChecks: []
 })
 
-bot.on("ready", () => {
+bot.on("ready", async () => {
     console.log("Ready")
+    console.log(await getLatestVideo(hermits[0].channelId))
 })
 
 bot.on("debug", (msg) => {

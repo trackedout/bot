@@ -5,17 +5,20 @@
     "main": "dist/index.js",
     "scripts": {
         "clean": "rimraf dist",
-        "dev": "pnpm run clean && tsc-watch --onSuccess \"node .\""
+        "postinstall": "only-allow pnpm",
+        "dev": "pnpm run clean && dotenv -- tsc-watch --onSuccess \"node .\""
     },
     "engines": {
         "node": ">=18.17.0"
     },
     "dependencies": {
-        "dotenv-cli": "^7.3.0",
         "crossbuild": "^0.6.0",
-        "discord.js": "^14.13.0"
+        "discord.js": "^14.13.0",
+        "dotenv-cli": "^7.3.0",
+        "xmldom": "^0.6.0"
     },
     "devDependencies": {
+        "@types/xmldom": "^0.1.32",
         "only-allow": "^1.1.1",
         "rimraf": "^5.0.1",
         "tsc-watch": "^6.0.4",
