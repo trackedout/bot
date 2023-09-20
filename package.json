@@ -6,12 +6,20 @@
     "scripts": {
         "clean": "rimraf dist",
         "postinstall": "only-allow pnpm",
-        "dev": "pnpm run clean && dotenv -- tsc-watch --onSuccess \"node .\""
+        "dev": "pnpm run clean && dotenv -- tsc-watch --onSuccess \"node .\"",
+        "db:push": "prisma db push",
+        "db:generate": "prisma generate",
+        "db:studio": "prisma studio"
     },
     "engines": {
         "node": ">=18.17.0"
     },
     "dependencies": {
+        "@prisma/client": "5.3.1",
+        "@twurple/api": "^7.0.2",
+        "@twurple/auth": "^7.0.2",
+        "@twurple/eventsub-ws": "^7.0.2",
+        "croner": "^7.0.1",
         "crossbuild": "^0.6.0",
         "discord.js": "^14.13.0",
         "dotenv-cli": "^7.3.0",
@@ -20,6 +28,7 @@
     "devDependencies": {
         "@types/xmldom": "^0.1.32",
         "only-allow": "^1.1.1",
+        "prisma": "^5.3.1",
         "rimraf": "^5.0.1",
         "tsc-watch": "^6.0.4",
         "typescript": "^5.1.6"

@@ -1,4 +1,4 @@
-type Hermit = {
+export type Hermit = {
     name: string;
     emoji?: `${number}`;
     channelId: string;
@@ -14,6 +14,7 @@ export const hermits: Array<Hermit> = [
     {
         name: "Cubfan135",
         channelId: "UC9lJXqw4QZw-HWaZH6sN-xw",
+        secondChannelId: "UCQgX4qy49zw9-DoHj4aZ6_g"
     },
     {
         name: "Docm77",
@@ -34,22 +35,27 @@ export const hermits: Array<Hermit> = [
     {
         name: "Grian",
         channelId: "UCR9Gcq0CMm6YgTzsDxAxjOQ",
+        secondChannelId: "UCDiznUV6dtdB9PQj__XVhnA"
     },
     {
         name: "Hypnotizd",
         channelId: "UChi5MyXJLQuPni3dM19Ar3g",
+        secondChannelId: "UCitd7S71KEU5vWl69I3iypg"
     },
     {
         name: "iJevin",
         channelId: "UCrEtZMErQXaSYy_JDGoU5Qw",
+        secondChannelId: "UCQoRCmqWLNoQXRJPiWgIyIw"
     },
     {
         name: "ImpulseSV",
         channelId: "UCuMJPFqazQI4SofSFEd-5zA",
+        secondChannelId: "UCbav3eAAnFxnXAkMUjoJ1og"
     },
     {
         name: "Iskall85",
         channelId: "UCZ9x-z3iOnIbJxVpm1rsu2A",
+        secondChannelId: "UCpJU1leLsnhl53KUfy5nAzQ"
     },
     {
         name: "JoeHills",
@@ -66,6 +72,7 @@ export const hermits: Array<Hermit> = [
     {
         name: "PearlescentMoon",
         channelId: "UC1GJ5aeqpEWklMBQ3oXrPQQ",
+        secondChannelId: "UCIc_32utqqEhuQl9OV0zjaA"
     },
     {
         name: "Rendog",
@@ -74,10 +81,12 @@ export const hermits: Array<Hermit> = [
     {
         name: "Scar",
         channelId: "UCodkNmk9oWRTIYZdr_HuSlg",
+        secondChannelId: "UCE_lYxBSVZ4JzsULD4BVm9A"
     },
     {
         name: "Stressmonster101",
         channelId: "UC24lkOxZYna9nlXYBcJ9B8Q",
+        secondChannelId: "UCOd7af-2Hzix4ew5TPt-v0Q"
     },
     {
         name: "TangoTek",
@@ -87,6 +96,7 @@ export const hermits: Array<Hermit> = [
     {
         name: "VintageBeef",
         channelId: "UCu17Sme-KE87ca9OTzP0p7g",
+        secondChannelId: "UC0rvwwv-GHCXfOeOpqdIQOQ"
     },
     {
         name: "Welsknight",
@@ -95,14 +105,17 @@ export const hermits: Array<Hermit> = [
     {
         name: "xBCrafted",
         channelId: "UC_MkjhQr_D_lGlO3uu-GxyA",
+        secondChannelId: "UCuWTX_KZLHXk7TMkfwTeCTQ"
     },
     {
         name: "XisumaVoid",
         channelId: "UCU9pX8hKcrx06XfOB-VQLdw",
+        secondChannelId: "UCL5W9kuKIQtXEVAxSadB2BQ"
     },
     {
         name: "ZedaphPlays",
         channelId: "UCPK5G4jeoVEbUp5crKJl6CQ",
+        secondChannelId: "UCP22ETMgm7zp7b1kpJe4CQA"
     },
     {
         name: "ZombieCleo",
