@@ -10,10 +10,12 @@ datasource db {
     url      = env("DATABASE_URL")
 }
 
-model LatestVideo {
-    channelId String   @id @unique
+model Video {
+    channelId String
     videoId   String
     updatedAt DateTime @updatedAt
+
+    @@unique([channelId, videoId])
 }
 
 model Kv {

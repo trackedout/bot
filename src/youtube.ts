@@ -42,7 +42,7 @@ export const checkYt = Cron("* * * * *", async () => {
         hermits.map(async (hermit) => {
             await checkChannel(hermit.channelId, hermit.name, "video");
             if (hermit.secondChannelId)
-                await checkChannel(hermit.secondChannelId, hermit.name, "vod");
+                await checkChannel(hermit.secondChannelId, `${hermit.name} 2`, "vod");
         })
     );
 });
@@ -53,9 +53,12 @@ const checkChannel = async (
     type: keyof typeof roles
 ) => {
     const video = await getLatestVideo(channelId);
-    const lastLogged = await prisma.latestVideo.findFirst({
+    const lastLogged = await prisma.video.findUnique({
         where: {
-            channelId: channelId,
+            channelId_videoId: {
+                channelId,
+                videoId: video.videoId,
+            },
         },
     });
     if (!lastLogged || lastLogged.videoId !== video.videoId) {
@@ -69,19 +72,13 @@ const checkChannel = async (
             },
             type
         );
+        await prisma.video.create({
+            data: {
+                videoId: video.videoId,
+                channelId,
+            },
+        });
     } else {
         console.log(`No new video:`, name);
     }
-    await prisma.latestVideo.upsert({
-        where: {
-            channelId: channelId,
-        },
-        update: {
-            videoId: video.videoId,
-        },
-        create: {
-            channelId: channelId,
-            videoId: video.videoId,
-        },
-    });
 };
