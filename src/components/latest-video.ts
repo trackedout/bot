@@ -3,10 +3,11 @@ import {
     CrossBuild,
     OptionsHandler,
     ReceivedInteraction,
+    uploadHaste,
 } from "crossbuild";
 
 import { hermits } from "../hermits.js";
-import { getLatestVideo } from "../youtube.js";
+import { getLatestVideo, getLatestVideoRaw } from "../youtube.js";
 
 export default class Cmd extends Component {
     constructor(cb: CrossBuild) {
@@ -30,6 +31,12 @@ export default class Cmd extends Component {
                         "Do you want to get the latest video from the Hermit's second channel?",
                     required: false,
                 },
+                {
+                    type: "boolean",
+                    name: "raw",
+                    description: "Do you want the raw data?",
+                    required: false,
+                }
             ],
         });
     }
@@ -40,7 +47,13 @@ export default class Cmd extends Component {
     ) {
         const hermitName = options.getString("hermit")!;
         const secondChannel = options.getBoolean("second-channel") ?? false;
+        const raw = options.getBoolean("raw") ?? false;
         const hermit = hermits.find((hermit) => hermit.name === hermitName)!;
+        if(raw) {
+            const rawData = await getLatestVideoRaw(secondChannel ? hermit.secondChannelId! : hermit.channelId)
+            const haste = await uploadHaste(rawData, "undefined", "xml", "https://hst.sh")
+            return interaction.reply(`${haste}`)
+        }
         if (secondChannel && !hermit.secondChannelId)
             return interaction.reply(
                 `**${hermit.name}** doesn't have a second channel!`

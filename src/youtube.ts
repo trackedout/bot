@@ -1,10 +1,22 @@
-import { DOMParser } from "xmldom";
+import { DOMParser, XMLSerializer } from "xmldom";
 
 export type Video = {
     videoId: string;
     title: string;
+    author: string;
+    description: string;
     thumbnail: string;
     timestamp: Date;
+};
+
+export const getLatestVideoRaw = async (channelId: string): Promise<string> => {
+    const res = await fetch(
+        `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`
+    );
+    const text = await res.text();
+    const str = new DOMParser().parseFromString(text, "text/xml");
+    const latestVid = str.getElementsByTagName("entry")[0];
+    return new XMLSerializer().serializeToString(latestVid);
 };
 
 export const getLatestVideo = async (channelId: string): Promise<Video> => {
@@ -14,12 +26,20 @@ export const getLatestVideo = async (channelId: string): Promise<Video> => {
     const text = await res.text();
     const str = new DOMParser().parseFromString(text, "text/xml");
     const latestVid = str.getElementsByTagName("entry")[0];
+    const description = latestVid
+        .getElementsByTagName("media:group")[0]
+        .getElementsByTagName("media:description")[0].childNodes[0]
+        .textContent!;
     const data = {
         videoId:
             latestVid.getElementsByTagName("yt:videoId")[0].childNodes[0]
                 .textContent!,
         title: latestVid.getElementsByTagName("title")[0].childNodes[0]
             .textContent!,
+        author: latestVid
+            .getElementsByTagName("author")[0]
+            .getElementsByTagName("name")[0].childNodes[0].textContent!,
+        description,
         thumbnail: `https://i2.ytimg.com/vi/${latestVid.getElementsByTagName(
             "yt:videoId"
         )[0].childNodes[0].textContent!}/hqdefault.jpg`,
@@ -42,7 +62,11 @@ export const checkYt = Cron("* * * * *", async () => {
         hermits.map(async (hermit) => {
             await checkChannel(hermit.channelId, hermit.name, "video");
             if (hermit.secondChannelId)
-                await checkChannel(hermit.secondChannelId, `${hermit.name} 2`, "vod");
+                await checkChannel(
+                    hermit.secondChannelId,
+                    `${hermit.name} 2`,
+                    "vod"
+                );
         })
     );
 });
@@ -66,11 +90,12 @@ const checkChannel = async (
         sendAlert(
             {
                 title: video.title,
+                author: video.author,
                 url: `https://youtu.be/${video.videoId}`,
                 imageUrl: video.thumbnail,
                 timestamp: video.timestamp,
             },
-            type
+            (type = video.description.includes("Stream Chat") ? "stream" : type)
         );
         await prisma.video.create({
             data: {

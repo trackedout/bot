@@ -37,6 +37,7 @@ bot.on("debug", (msg) => {
 export const sendAlert = async (
     data: {
         title: string;
+        author: string;
         url: string;
         imageUrl: string;
         timestamp: Date;
@@ -59,7 +60,7 @@ export const sendAlert = async (
         throw new Error("Channel not found");
 
     await channel.send({
-        content: `<@&${roles[type]}>`,
+        content: `<@&${roles[type]}> from ${data.author}`,
         embeds: [embed],
     });
 };
