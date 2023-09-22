@@ -27,6 +27,7 @@ export const hermits: Array<Hermit> = [
     {
         name: "FalseSymmetry",
         channelId: "UCuQYHhF6on6EXXO-_i_ClHQ",
+        secondChannelId: "UCpArlUtSgiPGBklMDzwrr2g"
     },
     {
         name: "GeminiTay",
