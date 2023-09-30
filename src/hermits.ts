@@ -32,6 +32,7 @@ export const hermits: Array<Hermit> = [
     {
         name: "GeminiTay",
         channelId: "UCUBsjvdHcwZd3ztdY1Zadcw",
+        secondChannelId: "UCyXsGEVtsqMzpCl9KmctYnw"
     },
     {
         name: "Grian",
@@ -77,7 +78,8 @@ export const hermits: Array<Hermit> = [
     },
     {
         name: "Rendog",
-        channelId: "UClu2e7S8atp6tG2galK9hgg",
+        channelId: "UCDpdtiUfcdUCzokpRWORRqA",
+        secondChannelId: "UCgKPGvDqqdWKLacXW-3zBSg"
     },
     {
         name: "Scar",
@@ -102,6 +104,7 @@ export const hermits: Array<Hermit> = [
     {
         name: "Welsknight",
         channelId: "UCKEJZ-dqIA03evnzEy1_owg",
+        secondChannelId: "UC_KWe-Dm0NUsAMAfAJ79wNA"
     },
     {
         name: "xBCrafted",
@@ -121,5 +124,6 @@ export const hermits: Array<Hermit> = [
     {
         name: "ZombieCleo",
         channelId: "UCjI5qxhtyv3srhWr60HemRw",
+        secondChannelId: "UCprJ_QiIJuPpBgST6cmIIVw"
     },
 ]
