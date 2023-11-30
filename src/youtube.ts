@@ -28,14 +28,11 @@ export const getLatestVideo = async (channelId: string): Promise<Video> => {
     const latestVid = str.getElementsByTagName("entry")[0];
     const description = latestVid
         .getElementsByTagName("media:group")[0]
-        .getElementsByTagName("media:description")[0].childNodes[0]?
-        .textContent || "No description";
+        .getElementsByTagName("media:description")[0].childNodes[0]?.textContent || "No description";
     const data = {
         videoId:
-            latestVid.getElementsByTagName("yt:videoId")[0].childNodes[0]?
-                .textContent || "No ID",
-        title: latestVid.getElementsByTagName("title")[0].childNodes[0]?
-            .textContent || "No Title",
+            latestVid.getElementsByTagName("yt:videoId")[0].childNodes[0]?.textContent || "No ID",
+        title: latestVid.getElementsByTagName("title")[0].childNodes[0]?.textContent || "No Title",
         author: latestVid
             .getElementsByTagName("author")[0]
             .getElementsByTagName("name")[0].childNodes[0]?.textContent || "No Author",
