@@ -38,7 +38,7 @@ export const getLatestVideo = async (channelId: string): Promise<Video> => {
             .textContent || "No Title",
         author: latestVid
             .getElementsByTagName("author")[0]
-            .getElementsByTagName("name")[0].childNodes[0] || "No Author",
+            .getElementsByTagName("name")[0].childNodes[0].textContent || "No Author",
         description,
         thumbnail: `https://i2.ytimg.com/vi/${latestVid.getElementsByTagName(
             "yt:videoId"
