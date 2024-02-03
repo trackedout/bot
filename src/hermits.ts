@@ -87,6 +87,15 @@ export const hermits: Array<Hermit> = [
         secondChannelId: "UCE_lYxBSVZ4JzsULD4BVm9A"
     },
     {
+        name: "Skizzleman",
+        channelId: "UCYdXHOv7srjm-ZsNsTcwbBw",
+        secondChannelId: "UC6gsPC4t87a-hIpoDXVaSGA"
+    },
+    {
+        name: "SmallishBeans",
+        channelId: "UC4qdHN4zHhd4VvNy3zNgXPA",
+    },
+    {
         name: "Stressmonster101",
         channelId: "UC24lkOxZYna9nlXYBcJ9B8Q",
         secondChannelId: "UCOd7af-2Hzix4ew5TPt-v0Q"
