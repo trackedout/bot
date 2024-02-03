@@ -19,10 +19,10 @@ export default class Cmd extends Component {
                     name: "hermit",
                     description: "The Hermit to get the latest video from",
                     required: true,
-                    choices: hermits.map((hermit) => ({
-                        name: hermit.name,
-                        value: hermit.name,
-                    })),
+//                    choices: hermits.map((hermit) => ({
+//                        name: hermit.name,
+//                        value: hermit.name,
+//                    })),
                 },
                 {
                     type: "boolean",
