@@ -125,7 +125,7 @@ export const hermits: Array<Hermit> = [
         secondChannelId: "UCuWTX_KZLHXk7TMkfwTeCTQ"
     },
     {
-        name: "XisumaVoid",
+        name: "Xisumavoid",
         channelId: "UCU9pX8hKcrx06XfOB-VQLdw",
         secondChannelId: "UCL5W9kuKIQtXEVAxSadB2BQ"
     },
