@@ -40,6 +40,10 @@ export const hermits: Array<Hermit> = [
         secondChannelId: "UCDiznUV6dtdB9PQj__XVhnA"
     },
     {
+        name: "Hermitcraft Recap",
+        channelId: "UC32w6uX5qtmUtF4QQQ2PKaQ",
+    },
+    {
         name: "Hypnotizd",
         channelId: "UChi5MyXJLQuPni3dM19Ar3g",
         secondChannelId: "UCitd7S71KEU5vWl69I3iypg"
