@@ -9,6 +9,12 @@ export const roles = {
     stream: "1153765972491128915",
 };
 
+export const channels = {
+    video: "1238129448960786533",
+    vod: "1153717537985536061",
+    stream: "1153717537985536061",
+};
+
 const discord = new DiscordInteractionModule({
     name: "discord",
     token: process.env.DISCORD_TOKEN!,
@@ -42,7 +48,8 @@ export const sendAlert = async (
         imageUrl: string;
         timestamp: Date;
     },
-    type: keyof typeof roles
+    type: keyof typeof roles,
+    channel: string
 ) => {
     const embed = {
         title: data.title,
@@ -55,7 +62,7 @@ export const sendAlert = async (
         },
         timestamp: data.timestamp.toISOString(),
     };
-    const channel = await discord.client.channels.fetch("1153717537985536061");
+    const channel = await discord.client.channels.fetch(channel);
     if (!channel || !channel.isTextBased())
         throw new Error("Channel not found");
 
