@@ -62,7 +62,7 @@ export const sendAlert = async (
         },
         timestamp: data.timestamp.toISOString(),
     };
-    const channel = await discord.client.channels.fetch(channel);
+    const channel = await discord.client.channels.fetch(channels[channel]);
     if (!channel || !channel.isTextBased())
         throw new Error("Channel not found");
 
