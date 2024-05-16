@@ -51,7 +51,7 @@ export const getLatestVideo = async (channelId: string): Promise<Video> => {
 
 import { Cron } from "croner";
 import { hermits } from "./hermits.js";
-import { prisma, roles, sendAlert, channels } from "./index.js";
+import { prisma, roles, sendAlert } from "./index.js";
 
 export const checkYt = Cron("* * * * *", async () => {
     console.log("Checking YouTube");
