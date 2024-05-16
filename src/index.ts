@@ -49,7 +49,7 @@ export const sendAlert = async (
         timestamp: Date;
     },
     type: keyof typeof roles,
-    channel: string
+    channelType: keyof typeof channels
 ) => {
     const embed = {
         title: data.title,
@@ -62,7 +62,7 @@ export const sendAlert = async (
         },
         timestamp: data.timestamp.toISOString(),
     };
-    const channel = await discord.client.channels.fetch(channels[channel]);
+    const channel = await discord.client.channels.fetch(channels[channelType]);
     if (!channel || !channel.isTextBased())
         throw new Error("Channel not found");
 
