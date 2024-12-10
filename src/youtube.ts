@@ -84,6 +84,12 @@ const checkChannel = async (
     });
     if (!lastLogged || lastLogged.videoId !== video.videoId) {
         console.log(`New video for ${name}`, video);
+        await prisma.video.create({
+            data: {
+                videoId: video.videoId,
+                channelId,
+            },
+        });
         sendAlert(
             {
                 title: video.title,
@@ -94,13 +100,7 @@ const checkChannel = async (
             },
             (type = video.description.includes("Stream Chat") ? "stream" : type),
             (type = video.description.includes("Stream Chat") ? "stream" : type)
-        );
-        await prisma.video.create({
-            data: {
-                videoId: video.videoId,
-                channelId,
-            },
-        });
+        )
     } else {
         console.log(`No new video:`, name);
     }
