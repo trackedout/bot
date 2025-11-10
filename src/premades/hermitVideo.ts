@@ -1,8 +1,8 @@
 import { Embed } from "@buape/carbon"
-import { client } from ".."
-import type { channelTypes, roleTypes } from "../config"
-import { channels, roles } from "../config"
-import type { Video } from "../youtube"
+import type { channelTypes, roleTypes } from "../config.js"
+import { channels, roles } from "../config.js"
+import { client } from "../index.js"
+import type { Video } from "../youtube.js"
 export class HermitVideo extends Embed {
 	constructor(data: Video) {
 		super({

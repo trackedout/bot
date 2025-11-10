@@ -1,6 +1,7 @@
 import { Client } from "@buape/carbon"
 import { GatewayIntents, GatewayPlugin } from "@buape/carbon/gateway"
-import { PrismaClient } from "@prisma/client"
+import LatestVideoCommand from "./components/latest-video.js"
+import PingCommand from "./components/ping.js"
 import { checkYt } from "./youtube.js"
 
 export const client = new Client(
@@ -12,7 +13,9 @@ export const client = new Client(
 		autoDeploy: true,
 		deploySecret: "a"
 	},
-	{},
+	{
+		commands: [new PingCommand(), new LatestVideoCommand()]
+	},
 	[
 		new GatewayPlugin({
 			intents:
@@ -23,7 +26,5 @@ export const client = new Client(
 		})
 	]
 )
-
-export const prisma = new PrismaClient()
 
 checkYt.trigger()

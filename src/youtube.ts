@@ -58,8 +58,8 @@ export const getLatestVideo = async (channelId: string): Promise<Video> => {
 
 import { Cron } from "croner"
 import type { roles } from "./config.js"
+import { prisma } from "./db.js"
 import { hermits } from "./hermits.js"
-import { prisma } from "./index.js"
 import { sendAlert } from "./premades/hermitVideo.js"
 
 export const checkYt = Cron("* * * * *", async () => {
