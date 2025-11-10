@@ -95,7 +95,7 @@ const checkChannel = async (
 				channelId
 			}
 		})
-		sendAlert(
+		await sendAlert(
 			video,
 			type,
 			video.description.includes("Stream Chat") ? "stream" : type

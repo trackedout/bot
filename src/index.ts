@@ -24,6 +24,6 @@ export const client = new Client(
 	]
 )
 
-checkYt.trigger()
-
 export const prisma = new PrismaClient()
+
+checkYt.trigger()
