@@ -18,9 +18,9 @@
 		"target": "ES2021",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
-        "outDir": "./dist",
+		"outDir": "./dist",
 		"rootDir": "src"
 	},
-    "include": ["src/**/*.ts", "src/*.ts"],
+	"include": ["src/**/*.ts", "src/*.ts"],
 	"exclude": ["node_modules", "dist"]
 }

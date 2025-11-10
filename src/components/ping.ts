@@ -1,13 +1,10 @@
-import { Component, CrossBuild, ReceivedInteraction } from "crossbuild"
+import { Command, type CommandInteraction } from "@buape/carbon"
 
-export default class Cmd extends Component {
-    constructor(cb: CrossBuild) {
-        super("ping", "command", cb, {
-            description: "Ping!"
-        })
-    }
+export default class PingCommand extends Command {
+	name = "ping"
+	description = "Ping the bot"
 
-    override async run(interaction: ReceivedInteraction) {
-        await interaction.reply("Pong!")
-    }
+	async run(interaction: CommandInteraction) {
+		await interaction.reply("Pong!")
+	}
 }

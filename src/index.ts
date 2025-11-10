@@ -1,77 +1,17 @@
-import { CrossBuild, DiscordInteractionModule } from "crossbuild";
-import { checkYt } from "./youtube.js";
-// import { loadTwitch } from "./twitch.js";
-import { PrismaClient } from "@prisma/client";
+import { Client } from "@buape/carbon"
+import { PrismaClient } from "@prisma/client"
+import { checkYt } from "./youtube.js"
 
-export const roles = {
-    video: "1153761322043986042",
-    vod: "1153765954774372484",
-    stream: "1153765972491128915",
-};
+export const client = new Client(
+	{
+		clientId: process.env.DISCORD_CLIENT_ID!,
+		token: process.env.DISCORD_TOKEN!,
+		baseUrl: "http://localhost:3000",
+		publicKey: "a"
+	},
+	{}
+)
 
-export const channels = {
-    video: "1238129448960786533",
-    vod: "1153717537985536061",
-    stream: "1153717537985536061",
-};
+checkYt.trigger()
 
-const discord = new DiscordInteractionModule({
-    name: "discord",
-    token: process.env.DISCORD_TOKEN!,
-    options: {
-        intents: ["Guilds", "GuildMembers", "GuildMessages", "GuildWebhooks"],
-    },
-});
-
-const bot = new CrossBuild({
-    name: "Tracked Out",
-    modules: [discord],
-    componentPaths: ["/components"],
-    customChecks: [],
-});
-
-bot.on("ready", async () => {
-    console.log("Ready");
-    console.log(bot);
-    checkYt.trigger()
-});
-
-bot.on("debug", (msg) => {
-    console.log(msg);
-});
-
-export const sendAlert = async (
-    data: {
-        title: string;
-        author: string;
-        url: string;
-        imageUrl: string;
-        timestamp: Date;
-    },
-    type: keyof typeof roles,
-    channelType: keyof typeof channels
-) => {
-    const embed = {
-        title: data.title,
-        url: data.url,
-        image: {
-            url: data.imageUrl,
-        },
-        footer: {
-            text: "Uploaded at",
-        },
-        timestamp: data.timestamp.toISOString(),
-    };
-    const channel = await discord.client.channels.fetch(channels[channelType]);
-    if (!channel || !channel.isTextBased())
-        throw new Error("Channel not found");
-
-    await channel.send({
-        content: `<@&${roles[type]}> from ${data.author}`,
-        embeds: [embed],
-    });
-};
-
-// loadTwitch(bot);
-
-export const prisma = new PrismaClient();
+export const prisma = new PrismaClient()
