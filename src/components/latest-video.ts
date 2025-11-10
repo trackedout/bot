@@ -24,12 +24,13 @@ export default class LatestVideoCommand extends Command {
 					name: hermit.name,
 					value: hermit.name
 				}))
+				const currentValue = interaction.options?.getString("hermit") ?? ""
 				options.filter((option) =>
-					option.name
-						.toLowerCase()
-						.includes(interaction.options.getString("hermit")!.toLowerCase())
+					currentValue
+						? option.name.toLowerCase().includes(currentValue.toLowerCase())
+						: true
 				)
-				return await interaction.respond(options)
+				return await interaction.respond(options.slice(0, 25))
 			}
 		},
 		{
@@ -48,11 +49,12 @@ export default class LatestVideoCommand extends Command {
 	]
 
 	override async run(interaction: CommandInteraction) {
-		const hermitName = interaction.options.getString("hermit")!
+		const hermitName = interaction.options.getString("hermit", true)
 		const secondChannel =
 			interaction.options.getBoolean("second-channel") ?? false
 		const raw = interaction.options.getBoolean("raw") ?? false
-		const hermit = hermits.find((hermit) => hermit.name === hermitName)!
+		const hermit = hermits.find((hermit) => hermit.name === hermitName)
+		if (!hermit) return interaction.reply(`**${hermitName}** is not a hermit!`)
 		if (raw) {
 			const rawData = await getLatestVideoRaw(
 				secondChannel ? hermit.secondChannelId! : hermit.channelId

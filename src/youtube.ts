@@ -63,7 +63,7 @@ import { hermits } from "./hermits.js"
 import { sendAlert } from "./premades/hermitVideo.js"
 
 export const checkYt = Cron("* * * * *", async () => {
-	console.log("Checking YouTube")
+	console.log(`\n\nChecking YouTube: ${new Date().toISOString()}`)
 	await Promise.allSettled(
 		hermits.map(async (hermit) => {
 			await checkChannel(hermit.channelId, hermit.name, "video")
