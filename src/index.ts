@@ -8,7 +8,9 @@ export const client = new Client(
 		clientId: process.env.DISCORD_CLIENT_ID!,
 		token: process.env.DISCORD_TOKEN!,
 		baseUrl: "http://localhost:3000",
-		publicKey: "a"
+		publicKey: "a",
+		autoDeploy: true,
+		deploySecret: "a"
 	},
 	{},
 	[
