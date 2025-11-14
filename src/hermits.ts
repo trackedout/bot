@@ -73,7 +73,8 @@ export const hermits: Array<Hermit> = [
 	},
 	{
 		name: "MumboJumbo",
-		channelId: "UChFur_NwVSbUozOcF_F2kMg"
+		channelId: "UChFur_NwVSbUozOcF_F2kMg",
+        secondChannelId: "UCuX3sy0gjs4zsUNAH-VynsQ"
 	},
 	{
 		name: "PearlescentMoon",
